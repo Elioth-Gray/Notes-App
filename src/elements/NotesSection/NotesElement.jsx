@@ -7,7 +7,7 @@ function NotesElement({title, data, type, onArchive, onDelete}){
     return(
         <div className='w-full flex flex-col gap-8'>
             <div className='w-full'>
-                <h1 className='text-xl font-semibold'>{title}</h1>
+                <h1 className='text-xl font-semibold'>{data.length > 0 ? title : type === "archive" ? "Tidak ada arsip." : "Tidak ada catatan."}</h1>
             </div>
             <div className="w-full flex flex-row flex-wrap gap-4">
             {data.map((note) => {
