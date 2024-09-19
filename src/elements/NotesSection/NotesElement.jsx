@@ -10,9 +10,9 @@ function NotesElement({title, data, type, onArchive, onDelete}){
                 <h1 className='text-xl font-semibold'>{data.length > 0 ? title : type === "archive" ? "Tidak ada arsip." : "Tidak ada catatan."}</h1>
             </div>
             <div className="w-full flex flex-row flex-wrap gap-4">
-            {data.map((note) => {
+            {data.length > 0 ? data.map((note) => {
                 return( <NotesCard id={note.id} title={note.title} body={note.body} createdAt={showFormattedDate(note.createdAt)} type={type} onDelete={onDelete} onArchive={onArchive}></NotesCard>)
-            })}
+            }) :<p className="mx-auto text-lg"> Tidak ada catatan</p>}
             </div>
         </div>
     )
