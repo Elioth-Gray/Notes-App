@@ -5,25 +5,25 @@ class InputForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            body: '',
+            title: '',
             maxChars: 50,
         };
-        this.handleBodyChange = this.handleBodyChange.bind(this);
+        this.handleTitleChange = this.handleTitleChange.bind(this);
     }
 
-    handleBodyChange(newBody) {
-        this.setState({ body: newBody });
+    handleTitleChange(newTitle) {
+        this.setState({ title: newTitle });
     }
 
     render() {
         const { label, onSubmit } = this.props;
-        const { body, maxChars } = this.state;
-        const remainingChars = maxChars - body.replace(/\s/g, '').length; 
+        const { title, maxChars } = this.state;
+        const remainingChars = maxChars - title.replace(/\s/g, '').length; 
 
         return (
             <div className='flex flex-col gap-3'>
                 <p className='text-end'>{label} {remainingChars}</p>
-                <NoteForm onSubmit={onSubmit} onBodyChange={this.handleBodyChange} />
+                <NoteForm onSubmit={onSubmit} onTitleChange={this.handleTitleChange} />
             </div>
         );
     }

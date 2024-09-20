@@ -16,21 +16,21 @@ class NoteForm extends React.Component {
     }
 
     onTitleChange(event) {
-        this.setState(() => {
-          return {
-            title: event.target.value,
-          }
-        });
+      const { maxChars } = this.state;
+      const newTitle = event.target.value;
+
+      if (newTitle.length <= maxChars) {
+          this.setState({ title: newTitle });
+          this.props.onTitleChange(newTitle); 
+      }
       }
       
       onBodyChange(event) {
-        const { maxChars } = this.state;
-        const newBody = event.target.value;
-
-        if (newBody.length <= maxChars) {
-            this.setState({ body: newBody });
-            this.props.onBodyChange(newBody); 
-        }
+        this.setState(() => {
+          return {
+            body: event.target.value,
+          }
+        });
     }
       
       onSubmit(event) {
